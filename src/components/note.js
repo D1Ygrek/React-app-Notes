@@ -130,7 +130,7 @@ const Note = ({idNowRendering,setIdNowRendering}) =>{
 }
 else if(ThisRemark===undefined){
     setIdNowRendering(0)
-    console.log('gay')
+    console.log('ауф')
 }else if(idNowRendering===0){
     return(
         <BlankPage/>
