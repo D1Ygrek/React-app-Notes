@@ -14,6 +14,7 @@ const Main = () =>{
             id:2,header:"Don't trust anyone",content:"They're watching me", important:true,timeAdd:"00:00",img:null
         }
     ]);
+    //remarks[1].content("Fuck you")
     console.log(remarks)
     const addItem = (id) =>{
         setMaxId(id)
