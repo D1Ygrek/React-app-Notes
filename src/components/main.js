@@ -8,10 +8,10 @@ const Main = () =>{
     const[NowViewId,setNowViewId]=React.useState(0);
     const[remarks,setRemarks] = React.useState([
         {
-            id:1,header:"Wake up",content:"", important: false,timeAdd:"00:00"
+            id:1,header:"Wake up",content:"", important: false,timeAdd:"00:00",img:null
         },
         {
-            id:2,header:"Don't trust anyone",content:"They're watching me", important:true,timeAdd:"00:00"
+            id:2,header:"Don't trust anyone",content:"They're watching me", important:true,timeAdd:"00:00",img:null
         }
     ]);
     console.log(remarks)
@@ -28,7 +28,8 @@ const Main = () =>{
             header:"Заголовок",
             content:'',
             important:false,
-            timeAdd:res
+            timeAdd:res,
+            img:null
         }
         const newArr = [
             ...remarks,

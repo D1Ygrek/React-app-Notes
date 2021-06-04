@@ -5,6 +5,7 @@ import BlankPage from './blankPage'
 const Note = ({idNowRendering,setIdNowRendering}) =>{
     
     const [remarks,setRemarks]=useContext(Remarks);
+    const ThisRemark = remarks.filter((item) => item.id===idNowRendering)
     const ChangeNote = (id) =>{
         let d = new Date();
         let hours = d.getHours();
@@ -12,12 +13,33 @@ const Note = ({idNowRendering,setIdNowRendering}) =>{
         if(hours<10){hours="0"+hours};
         if(minutes<10){minutes="0"+minutes};
         let res=hours+':'+minutes;
+        let imgURL=ThisRemark[0].img
+        if(imgURL!=null){
+            try{
+                imgURL=URL.createObjectURL(document.getElementById(idNowRendering+"file").files[0]);
+                document.getElementById('image').src=imgURL
+            }
+            catch{console.log('done nothing')}
+        }
+        else{
+        try{
+            imgURL=URL.createObjectURL(document.getElementById(idNowRendering+"file").files[0]);
+            document.getElementById('image').src=imgURL
+        }
+        catch{
+            imgURL=null
+        }
+        
+        }
+        console.log(imgURL)
+        
         const NewItem = {
             id:id,
             header:document.getElementById("header").value,
             content:document.getElementById("content").value,
             important:document.getElementById("checkbox-one").checked,
             timeAdd:res,
+            img:imgURL
         }
         const indx=id-1;
         const before = remarks.slice(0,indx)
@@ -29,11 +51,14 @@ const Note = ({idNowRendering,setIdNowRendering}) =>{
         ]
         setRemarks(newArr)
     }
-    const ThisRemark = remarks.filter((item) => item.id===idNowRendering)
+    
     
     console.log(remarks)
     if((idNowRendering!==0)&(ThisRemark!==undefined)){
         let StyleNames=''
+        let idName=idNowRendering+"file"
+        let ImageStyle='none'
+        if(ThisRemark[0].img!==null){ImageStyle='block'}
         if(ThisRemark[0].important){StyleNames+='important'}
         else{StyleNames+='notImportant'}
     return(
@@ -59,6 +84,10 @@ const Note = ({idNowRendering,setIdNowRendering}) =>{
 	                </label>
                 </div>
                 </div>
+            </div>
+            <div className="row">
+                <input type="file" value="" id={idName} onChange={()=>{ChangeNote(idNowRendering)}}></input>
+                <img src={ThisRemark[0].img} id="image" style={{display:ImageStyle}}></img>
             </div>
         </div>
     )

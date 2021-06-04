@@ -19,7 +19,7 @@ const PreviewList = ({toggleNote,idNowRendering,setIdNowRendering}) =>{
     }
     
     const elements = remarks.map((item) =>{
-        const {id,timeAdd,...itemProps} = item;
+        const {id,timeAdd,img,...itemProps} = item;
         let ClassNames="list-group-item "
         if(id===idNowRendering) { ClassNames+="NowRendering"}
         return(
@@ -34,6 +34,11 @@ const PreviewList = ({toggleNote,idNowRendering,setIdNowRendering}) =>{
                         </div>
                         <div className="col-1">
                             <button id="delete" className="btn delBut" onClick={()=>{delItem(id)}}>X</button>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-10">
+                            <img className="previewImg" src={img}></img>
                         </div>
                     </div>
                 </div>
