@@ -7,7 +7,7 @@
     overflow-x: hidden;
     padding-top: 20px;
     left:0;
-    background-color: #111;
+    background-color: gray;
   }
   
 .split_right {
@@ -18,11 +18,23 @@
     overflow-x: hidden;
     padding-top: 20px;
     right:0;
-    background-color: red;
+    background-color:darkgray;
 }
   
   /* If you want the content centered horizontally and vertically */
 .add{
-  border-radius: 50%;
+  border-radius: 5px;
   background-color: chocolate;
+  width:50%;
+  margin-left:10px;
+  margin-bottom:10px;
+}
+.delBut{
+  color:red;
+  border:1px solid red;
+  border-radius:5px;
+}
+.delBut:hover{
+  background-color: red;
+  color:white;
 }

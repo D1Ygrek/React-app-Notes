@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import {Remarks} from './context';
 const PreviewItem = (props) =>{
     const itemStyle = {
         color: props.important ? 'red' : 'black'
     }
-    return(
+
+    return(           
         <span onClick={props.OnToggleNote}>
-            <h1 style={itemStyle}>{props.header}</h1>
+            <h3 style={itemStyle}>{props.header}</h3>
         </span>
     )
 }

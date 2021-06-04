@@ -1,7 +1,8 @@
 import React, { useContext} from 'react';
 import './note.css'
 import {Remarks} from './context'
-const Note = ({idNowRendering}) =>{
+import BlankPage from './blankPage'
+const Note = ({idNowRendering,setIdNowRendering}) =>{
     
     const [remarks,setRemarks]=useContext(Remarks);
     const ChangeNote = (id) =>{
@@ -24,6 +25,7 @@ const Note = ({idNowRendering}) =>{
     const ThisRemark = remarks.filter((item) => item.id===idNowRendering)
     
     console.log(remarks)
+    if((idNowRendering!==0)&(ThisRemark!==undefined)){
     return(
         <div className="container">
             <div className="row">
@@ -41,5 +43,15 @@ const Note = ({idNowRendering}) =>{
             </div>
         </div>
     )
+}
+else if(ThisRemark===undefined){
+    setIdNowRendering(0)
+    console.log('gay')
+}else if(idNowRendering===0){
+    return(
+        <BlankPage/>
+    )
+}
+
 }
 export default Note;

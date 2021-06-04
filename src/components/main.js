@@ -5,7 +5,7 @@ import Note from './note'
 import {Remarks} from './context'
 const Main = () =>{
     const[MaxId,setMaxId]=React.useState(2);
-    const[NowViewId,setNowViewId]=React.useState(2);
+    const[NowViewId,setNowViewId]=React.useState(0);
     const[remarks,setRemarks] = React.useState([
         {
             id:1,header:"Wake up",content:"", important: false
@@ -37,14 +37,14 @@ const Main = () =>{
             <div className="split_left">
                 <button className="add btn" onClick={() =>{addItem(MaxId+1);}}><h1>+</h1></button>
                 <Remarks.Provider value={[remarks,setRemarks]}>
-                    <PreviewList toggleNote={(id)=>setNowViewId(id)} />
+                    <PreviewList toggleNote={(id)=>setNowViewId(id)} idNowRendering={NowViewId} setIdNowRendering={setNowViewId} />
                 </Remarks.Provider>               
             </div>
 
             <div className="split_right">
                 <div>
                     <Remarks.Provider value={[remarks,setRemarks]}>
-                        <Note idNowRendering={NowViewId}/>
+                        <Note idNowRendering={NowViewId} setIdNowRendering={setNowViewId}/>
                     </Remarks.Provider>  
 
                 </div>
