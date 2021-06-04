@@ -8,20 +8,27 @@ const Main = () =>{
     const[NowViewId,setNowViewId]=React.useState(0);
     const[remarks,setRemarks] = React.useState([
         {
-            id:1,header:"Wake up",content:"", important: false
+            id:1,header:"Wake up",content:"", important: false,timeAdd:"00:00"
         },
         {
-            id:2,header:"Don't trust anyone",content:"They're watching me", important:true
+            id:2,header:"Don't trust anyone",content:"They're watching me", important:true,timeAdd:"00:00"
         }
     ]);
     console.log(remarks)
     const addItem = (id) =>{
         setMaxId(id)
+        let d = new Date();
+        let hours = d.getHours();
+        let minutes = d.getMinutes();
+        if(hours<10){hours="0"+hours};
+        if(minutes<10){minutes="0"+minutes};
+        let res=hours+':'+minutes;
         const NewItem = {
             id:id,
             header:"Заголовок",
             content:'',
-            important:false
+            important:false,
+            timeAdd:res
         }
         const newArr = [
             ...remarks,

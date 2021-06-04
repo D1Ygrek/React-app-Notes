@@ -17,14 +17,20 @@ const PreviewList = ({toggleNote,idNowRendering,setIdNowRendering}) =>{
         ]
         setRemarks(newArr)
     }
+    
     const elements = remarks.map((item) =>{
-        const {id,...itemProps} = item;
+        const {id,timeAdd,...itemProps} = item;
+        let ClassNames="list-group-item "
+        if(id===idNowRendering) { ClassNames+="NowRendering"}
         return(
-            <li key={id}   className="list-group-item">
+            <li key={id}   className={ClassNames}>
                 <div className="container">
                     <div className="row">
-                        <div className="col-11">
+                        <div className="col-10">
                             < PreviewItem {...itemProps} OnToggleNote={()=>toggleNote(id)}/>
+                        </div>
+                        <div className="col-1">
+                            <span>изм. {timeAdd}</span>
                         </div>
                         <div className="col-1">
                             <button id="delete" className="btn delBut" onClick={()=>{delItem(id)}}>X</button>
